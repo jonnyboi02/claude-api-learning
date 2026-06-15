@@ -1,13 +1,15 @@
 import os
+from pathlib import Path
 from statistics import mean
 
 from dataset import generate_dataset
 from compliance_prompt import run_compliance_check_from_inputs
 from evaluator import run_evaluation
 
-DATASET_FILE = "dataset.json"
-JSON_OUTPUT = "output.json"
-HTML_OUTPUT = "output.html"
+_DIR = Path(__file__).parent
+DATASET_FILE = str(_DIR / "dataset.json")
+JSON_OUTPUT = str(_DIR / "output.json")
+HTML_OUTPUT = str(_DIR / "output.html")
 
 
 def main():

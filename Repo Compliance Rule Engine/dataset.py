@@ -1,6 +1,9 @@
 import json
+from pathlib import Path
 from dotenv import load_dotenv
 from anthropic import Anthropic
+
+_DIR = Path(__file__).parent
 
 load_dotenv()
 
@@ -117,42 +120,15 @@ Return a JSON array. Each element:
 - Reasoning must reference specific calculated values and limits
 </constraints>
 
-Generate 20 test cases covering the full range of scenarios.
-Distribution:
-- 3 clean pass
-- 3 OR parent breached
-- 3 AND parent breached
-- 3 AND parent NOT breached despite partial child breach
-- 3 multiple parents breached simultaneously
-- 3 trade reduces net exposure (offset scenarios)
-- 2 edge cases at exactly the threshold
-
-Vary the rule configurations - different parents, different children, different AND/OR logic, different bounds across cases."""
+Generate 20 diverse test cases. Vary the scenario types across: clean pass, OR parent breached, AND parent breached, AND parent NOT breached (partial child breach only), net exposure reduced by trade, and edge cases at threshold."""
 
 
-DISTRIBUTION_SECTION = """Generate 20 test cases covering the full range of scenarios.
-Distribution:
-- 3 clean pass
-- 3 OR parent breached
-- 3 AND parent breached
-- 3 AND parent NOT breached despite partial child breach
-- 3 multiple parents breached simultaneously
-- 3 trade reduces net exposure (offset scenarios)
-- 2 edge cases at exactly the threshold"""
-
-
-def _call_generator(num_cases: int) -> list[dict]:
-    prompt = GENERATOR_PROMPT.replace(
-        DISTRIBUTION_SECTION,
-        f"Generate {num_cases} diverse test cases. Vary the scenario types across: "
-        "clean pass, OR parent breached, AND parent breached, AND parent NOT breached "
-        "(partial child breach only), net exposure reduced by trade, and edge cases at threshold.",
-    )
+def _call_generator() -> list[dict]:
     text = client.messages.create(
         model=MODEL,
-        max_tokens=8000,
+        max_tokens=16000,
         temperature=1.0,
-        messages=[{"role": "user", "content": prompt}],
+        messages=[{"role": "user", "content": GENERATOR_PROMPT}],
     ).content[0].text
 
     # Extract the outermost JSON array, ignoring any markdown fences or
@@ -165,20 +141,13 @@ def _call_generator(num_cases: int) -> list[dict]:
     return json.loads(text[start : end + 1])
 
 
-def generate_dataset(output_file: str = "dataset.json", batch_size: int = 3) -> list[dict]:
-    """Generate test cases in batches to avoid hitting output token limits."""
+def generate_dataset(output_file: str = None) -> list[dict]:
+    """Generate 20 test cases in a single call."""
+    if output_file is None:
+        output_file = str(_DIR / "dataset.json")
     print("Generating dataset...")
 
-    dataset = []
-    batch = 1
-    while len(dataset) < 20:
-        remaining = 20 - len(dataset)
-        n = min(batch_size, remaining)
-        print(f"  Batch {batch}: requesting {n} cases...")
-        cases = _call_generator(n)
-        dataset.extend(cases)
-        batch += 1
-
+    dataset = _call_generator()
     print(f"Generated {len(dataset)} test cases.")
 
     with open(output_file, "w") as f:

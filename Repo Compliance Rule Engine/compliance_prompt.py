@@ -5,7 +5,7 @@ from anthropic import Anthropic
 load_dotenv()
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-haiku-4-5"
 
 PRODUCTION_PROMPT = """
 You are a repo trading compliance validator. Given a rule configuration,
