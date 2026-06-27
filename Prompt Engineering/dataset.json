@@ -1,39 +1,49 @@
 [
   {
     "prompt_inputs": {
-      "content": "The Industrial Revolution fundamentally transformed society through mechanization and factory systems, yet its social consequences remain contested among historians. James Watt's steam engine innovations enabled unprecedented manufacturing capacity, while simultaneously displacing skilled artisans and concentrating wealth among factory owners. Sociologists have documented how rapid urbanization during this period created dense working-class neighborhoods, breeding grounds for both labor movements and infectious disease. The digital revolution of the late 20th century echoes these patterns: automation through artificial intelligence and machine learning increases productivity, yet threatens employment in routine cognitive tasks. Meanwhile, the concentration of technological power among a few technology corporations raises questions about digital inequality and data governance that mirror 19th-century concerns about industrial monopolies. Both periods reveal how technological advancement intersects with economic restructuring, labor displacement, and shifting social hierarchies across different historical contexts."
+      "height": "178 cm",
+      "weight": "68 kg",
+      "goal": "Marathon race day nutrition - maximize carbohydrate loading and sustained energy for 42km run",
+      "restrictions": "None"
     },
     "solution_criteria": [
-      "Extracts topics spanning all three domains: history (Industrial Revolution, artisans, urbanization), technology (steam engine, AI, machine learning), and sociology (labor movements, social inequality, disease, employment displacement)",
-      "Returns output as a JSON array of strings with clear, distinct topic labels",
-      "Captures interdisciplinary connections and comparative themes without duplicating overlapping concepts"
+      "Meal plan contains 4-5 eating occasions distributed throughout the day",
+      "Total daily carbohydrates are elevated (approximately 8-10g per kg body weight) to support endurance performance",
+      "Includes pre-race meal timing and composition suitable for morning marathon start",
+      "All meals and snacks are compact and easy to digest"
     ],
-    "task_description": "Extract topics out of a passage of text from a scholary article into a JSON array of strings",
-    "scenario": "Testing with interdisciplinary passage containing mixed domains (history, technology, and sociology) to verify accurate topic extraction across multiple subject areas"
+    "task_description": "Write a commpact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a sport requiring high endurance and caloric expenditure (marathon runner preparing for race day) to verify the meal plan accounts for sustained energy needs and carbohydrate loading"
   },
   {
     "prompt_inputs": {
-      "content": "The epistemological implications of quantum entanglement challenge classical notions of locality and determinism, particularly through Bell's theorem and subsequent experimental validations that demonstrate non-local correlations between spatially separated particles. This phenomenon intersects with foundational questions in philosophy of physics regarding the nature of reality and measurement, while simultaneously enabling practical applications in quantum cryptography and quantum computing architectures. The mathematical formalism of density matrices and the Copenhagen interpretation provide frameworks for understanding wave function collapse, though interpretative debates\u2014including many-worlds theory, pilot-wave theory, and relational quantum mechanics\u2014remain unresolved. Furthermore, the relationship between quantum mechanics and general relativity at the Planck scale suggests deeper unified theories, with implications for understanding black hole thermodynamics and the information paradox."
+      "height": "180 cm",
+      "weight": "90 kg",
+      "goal": "Muscle recovery and strength gains for weightlifting",
+      "restrictions": "None"
     },
     "solution_criteria": [
-      "Identifies both explicit topics (quantum entanglement, Bell's theorem, quantum cryptography) and implicit/nested concepts (philosophy of physics, measurement problem, interpretative frameworks)",
-      "Avoids over-fragmentation by grouping closely related concepts (e.g., 'many-worlds theory, pilot-wave theory' as interpretations rather than separate topics)",
-      "Captures cross-disciplinary themes (physics, mathematics, philosophy) without redundancy",
-      "Returns results as a JSON array of strings with clear, concise topic labels"
+      "Meal plan is compact and covers exactly 1 day",
+      "Protein intake is prioritized with at least 1.6-2.2g per kg of body weight distributed across meals",
+      "Pre and post-workout meals are included with appropriate timing and macronutrient composition for strength training recovery"
     ],
-    "task_description": "Extract topics out of a passage of text from a scholary article into a JSON array of strings",
-    "scenario": "Testing with dense academic prose containing implicit topics and nested concepts to ensure the prompt identifies both explicit and implied subjects without over-fragmenting"
+    "task_description": "Write a commpact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with an athlete in a strength/power sport with specific macro requirements (weightlifter focused on muscle recovery) to ensure protein intake and meal timing around workouts are appropriately emphasized"
   },
   {
     "prompt_inputs": {
-      "content": "Recent advances in CRISPR-Cas9 gene editing have revolutionized therapeutic applications in treating monogenic disorders. The NHEJ (non-homologous end joining) and HDR (homology-directed repair) pathways represent distinct mechanisms for DNA repair following double-strand breaks induced by the Cas9 endonuclease. Off-target effects remain a critical concern in clinical translation, particularly when targeting repetitive sequences in the human genome. Furthermore, delivery of sgRNA (single guide RNA) complexes via AAV (adeno-associated virus) vectors presents significant challenges due to packaging constraints, necessitating dual-AAV strategies or alternative delivery modalities such as lipid nanoparticles (LNPs) and electroporation. The ENCODE project has provided comprehensive epigenetic mapping data that informs guide RNA design optimization, while GWAS (genome-wide association studies) continue to identify novel therapeutic targets for polygenic diseases."
+      "height": "172",
+      "weight": "68",
+      "goal": "Endurance and muscle maintenance for competitive swimming",
+      "restrictions": "Vegetarian, nut allergy"
     },
     "solution_criteria": [
-      "Extracts all major topics including both full terms and their abbreviated acronyms (e.g., CRISPR-Cas9, NHEJ, HDR, sgRNA, AAV, LNPs, ENCODE, GWAS)",
-      "Identifies specialized domain concepts such as gene editing mechanisms, delivery methods, and associated challenges",
-      "Returns output as a valid JSON array of strings with no duplicate entries"
+      "Meal plan contains exactly 3 meals (breakfast, lunch, dinner) for one day",
+      "All meals are vegetarian and completely nut-free with no cross-contamination risks",
+      "Plan provides adequate protein and carbohydrates to support swimming performance and recovery",
+      "Meals are practical and quick to prepare for an athlete's schedule"
     ],
-    "task_description": "Extract topics out of a passage of text from a scholary article into a JSON array of strings",
-    "scenario": "Testing with a passage containing domain-specific jargon and acronyms to verify the prompt correctly identifies topics even when terminology is abbreviated or highly specialized"
+    "task_description": "Write a commpact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with an athlete having multiple dietary restrictions (vegetarian swimmer with a nut allergy) to verify the prompt can adapt the meal plan while maintaining nutritional completeness and practical feasibility"
   }
 ]
